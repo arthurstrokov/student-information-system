@@ -1,0 +1,32 @@
+[
+  {
+    "name": "arthur",
+    "studentNumber": 23,
+    "email": "arthurstrokov@gmail.com",
+    "courseList": [
+      "English",
+      "Math"
+    ],
+    "gpa": 3.58
+  },
+  {
+    "name": "avistate",
+    "studentNumber": 28,
+    "email": "avistate@gmail.com",
+    "courseList": [
+      "Turkish",
+      "Science"
+    ],
+    "gpa": 2.48
+  },
+  {
+    "name": "abc",
+    "studentNumber": 45,
+    "email": "abc@abc.com",
+    "courseList": [
+      "Art",
+      "Science"
+    ],
+    "gpa": 3.28
+  }
+]
