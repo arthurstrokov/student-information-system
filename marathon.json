@@ -1,0 +1,38 @@
+{
+  "id": "student-information-system",
+  "cmd": null,
+  "cpus": 0.5,
+  "mem": 256.0,
+  "disk": 0,
+  "instances": 1,
+  "networks": [
+    {
+      "mode": "container/bridge"
+    }
+  ],
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "arthurstrokov/student-information-system:latest"
+    },
+    "portMappings": [
+      {
+        "containerPort": 8484,
+        "hostPort": 8484
+      }
+    ]
+  },
+  "healthChecks": [
+    {
+      "protocol": "COMMAND",
+      "command": {
+        "value": "pwd"
+      },
+      "gracePeriodSeconds": 300,
+      "intervalSeconds": 60,
+      "timeoutSeconds": 20,
+      "maxConsecutiveFailures": 3,
+      "ignoreHttp1xx": false
+    }
+  ]
+}
