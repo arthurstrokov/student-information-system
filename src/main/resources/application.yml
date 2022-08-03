@@ -1,0 +1,17 @@
+spring:
+  main:
+    banner-mode: "off"
+  application:
+    name: student-information-system
+  config:
+    import: 'optional:configserver:'
+  profiles:
+    active: cloud
+  cloud:
+    config:
+      enabled: true
+      failFast: false
+      uri: http://localhost:8888/ # only for local using
+---
+server:
+  port: 8484
