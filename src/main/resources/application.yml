@@ -14,4 +14,4 @@ spring:
       uri: http://localhost:8888/ # only for local using
 ---
 server:
-  port: 8484
+  port: 8080
