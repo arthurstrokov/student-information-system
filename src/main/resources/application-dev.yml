@@ -1,7 +1,7 @@
 spring:
   data:
     mongodb: # mongodb
-      host: localhost
+      host: ${MONGODB_HOST} # for using in Virtualbox Minikube Kubernetes instead of localhost
       port: 27017
       database: test
 ---

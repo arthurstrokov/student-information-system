@@ -53,7 +53,7 @@ docker { // For docker plugin
         ports = [8080]
         images = [
                 'arthurstrokov/student-information-system:latest',
-                'arthurstrokov/student-information-system:v1.4'
+                'arthurstrokov/student-information-system:v1.3'
         ]
         jvmArgs = ['-Xmx2048m']
     }

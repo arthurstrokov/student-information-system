@@ -23,7 +23,7 @@ public class StudentRestController {
     private final StudentService studentService;
     private final StudentMapper mapper;
 
-    @GetMapping(value = "/")
+    @GetMapping
     public List<StudentDTO> getAllStudents() {
         return studentService.findAll().stream().map(mapper::toDto).collect(Collectors.toList());
     }
