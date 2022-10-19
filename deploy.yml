@@ -18,13 +18,13 @@ spec:
     spec:
       containers:
         - name: student-information-system
-          image: arthurstrokov/student-information-system:v1.3
+          image: arthurstrokov/student-information-system:v2.2
           imagePullPolicy: IfNotPresent
           env:
             - name: CONFIG_URL
-              value: 192.168.59.105:30080/cloud-configuration-server
-            - name: MONGODB_HOST
-              value: 10.0.2.2
+              value: 192.168.59.106:30372/cloud-configuration-server
+            - name: spring.mvc.servlet.path
+              value: /student-information-system
           ports:
             - containerPort: 8080
 ---

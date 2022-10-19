@@ -6,11 +6,11 @@ spring:
   config:
     import: 'optional:configserver:'
   profiles:
-    active: dev # dev cloud
+    active: cloud # dev cloud
   cloud:
     config:
       enabled: true
-      failFast: false
+      failFast: true
       uri: http://${CONFIG_URL}/
 ---
 server:
