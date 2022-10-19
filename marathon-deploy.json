@@ -1,0 +1,67 @@
+{
+  "id": "/student-information-system",
+  "cmd": null,
+  "cpus": 0.5,
+  "mem": 256.0,
+  "disk": 0,
+  "instances": 1,
+  "acceptedResourceRoles": [
+    "*",
+    "development"
+  ],
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "forcePullImage": false,
+      "image": "arthurstrokov/student-information-system:latest",
+      "parameters": [],
+      "privileged": false
+    },
+    "volumes": [],
+    "portMappings": [
+      {
+        "containerPort": 8080,
+        "hostPort": 0,
+        "labels": {},
+        "protocol": "tcp",
+        "servicePort": 8080
+      }
+    ]
+  },
+  "env": {
+    "CONTAINER_NAME": "student-information-system",
+    "CONFIG_URL": "${HOST}/cloud-configuration-server"
+  },
+  "healthChecks": [
+    {
+      "protocol": "COMMAND",
+      "command": {
+        "value": "pwd"
+      },
+      "gracePeriodSeconds": 300,
+      "intervalSeconds": 60,
+      "timeoutSeconds": 20,
+      "maxConsecutiveFailures": 3,
+      "ignoreHttp1xx": false
+    }
+  ],
+  "labels": {
+    "HAPROXY_GROUP": "local",
+    "HAPROXY_0_HTTP_BACKEND_PROXYPASS_PATH": "/student-information-system",
+    "HAPROXY_0_VHOST": "host.docker.internal",
+    "HAPROXY_0_PATH": "-i /student-information-system"
+  },
+  "networks": [
+    {
+      "mode": "container/bridge"
+    }
+  ],
+  "portDefinitions": [],
+  "backoffFactor": 2,
+  "backoffSeconds": 30,
+  "maxLaunchDelaySeconds": 86400,
+  "upgradeStrategy": {
+    "maximumOverCapacity": 1,
+    "minimumHealthCapacity": 0.5
+  }
+}

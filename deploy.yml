@@ -1,0 +1,47 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: student-information-system
+  name: student-information-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: student-information-system
+  template:
+    metadata:
+      labels:
+        app: student-information-system
+        visualize: "true"
+    spec:
+      containers:
+        - name: student-information-system
+          image: arthurstrokov/student-information-system:v1.4
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: CONFIG_URL
+              value: localhost:8888
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    run: student-information-system
+  name: student-information-system
+  annotations:
+    haproxy.org/check: "enabled"
+    haproxy.org/forwarded-for: "enabled"
+    haproxy.org/load-balance: "roundrobin"
+    haproxy.org/path-rewrite: /
+spec:
+  selector:
+    app: student-information-system
+  ports:
+    - port: 8080
+      protocol: TCP
+      targetPort: 8080
+  type: LoadBalancer

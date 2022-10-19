@@ -6,12 +6,12 @@ spring:
   config:
     import: 'optional:configserver:'
   profiles:
-    active: cloud # dev
+    active: dev # dev cloud
   cloud:
     config:
       enabled: true
       failFast: false
-      uri: http://localhost:8888/ # only for local using
+      uri: http://${CONFIG_URL}/
 ---
 server:
   port: 8080
