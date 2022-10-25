@@ -11,7 +11,25 @@ spring:
     config:
       enabled: true
       failFast: true
-      uri: http://${CONFIG_URL}/
+      discovery:
+        enabled: true
+        service-id: cloud-configuration-server
+#      uri: http://${CONFIG_URL:localhost:8888}/
+---
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    healthcheck:
+      enabled: true
+  instance:
+    preferIpAddress: false
 ---
 server:
   port: 8080
+--- # Actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: ["*"]
