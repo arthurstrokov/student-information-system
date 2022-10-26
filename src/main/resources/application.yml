@@ -10,7 +10,7 @@ spring:
   cloud:
     config:
       enabled: true
-      failFast: true
+      failFast: false
       discovery:
         enabled: true
         service-id: cloud-configuration-server
@@ -19,7 +19,7 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://192.168.59.106:30003/eureka/
     healthcheck:
       enabled: true
   instance:
