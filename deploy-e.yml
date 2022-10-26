@@ -1,0 +1,46 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: student-information-system
+  name: student-information-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: student-information-system
+  template:
+    metadata:
+      labels:
+        app: student-information-system
+        visualize: "true"
+    spec:
+      containers:
+        - name: student-information-system
+          image: arthurstrokov/student-information-system:v0.0.0
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: CONFIG_URL
+              value: 192.168.59.106:30372/cloud-configuration-server
+            - name: spring.mvc.servlet.path
+              value: /student-information-system
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    run: student-information-system
+  name: student-information-system
+spec:
+  selector:
+    app: student-information-system
+  ports:
+    - name: student-information-system-port
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+      nodePort: 30005
+  type: NodePort
