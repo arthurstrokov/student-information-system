@@ -61,7 +61,7 @@ docker {
         ports = [8080]
         images = [
                 'arthurstrokov/student-information-system:latest',
-                'arthurstrokov/student-information-system:v2.2'
+                'arthurstrokov/student-information-system:v0.0.0'
         ]
         jvmArgs = ['-Xmx2048m']
     }
