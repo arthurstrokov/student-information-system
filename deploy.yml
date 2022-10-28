@@ -21,10 +21,14 @@ spec:
           image: arthurstrokov/student-information-system:v0.0.0
           imagePullPolicy: IfNotPresent
           env:
+            - name: EUREKA-DEFAULT-ZONE
+              value: "http://eureka-server:8761/eureka/"
             - name: CONFIG_URL
               value: 192.168.59.106:30372/cloud-configuration-server
             - name: spring.mvc.servlet.path
               value: /student-information-system
+            - name: SERVER-PORT
+              value: "8080"
           ports:
             - containerPort: 8080
 ---
